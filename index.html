@@ -1,1 +1,159 @@
-bithex.de
+<html>
+    <head>
+        <title>bit.hex UG (haftungsbeschränkt)</title>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+
+
+        <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+                font-family: 'Open Sans';
+            }
+
+            body {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(247,193,2,1.0);
+            }
+
+            #svgBithexLogo {
+                height: 200px;
+            }
+            
+            #bhCompany {
+                color: #fff;
+                opacity: .5;
+                text-align: center;
+                font-size: 70px;
+            }
+            
+            #bhCopyright {
+                position: fixed;
+                bottom: 7px;
+                right: 7px;
+                color: #000;
+                opacity: .5;
+                font-size: 13px;
+            }
+            
+            #bhOverlay {
+                position: fixed;
+                bottom: 0px;
+                right: 0px;
+                width: 25%;
+                height: 25%;
+                background-color: rgba(0,0,0,.3);
+                border-left: 1px solid #000;
+                border-top: 1px solid #000;
+                border-top-left-radius: 25px;
+                display: none;
+            }
+        </style>
+
+        <script>
+
+            function a(v) {
+                return (Math.sin(v * Math.PI - Math.PI / 2) + 1) / 2;
+            }
+
+            var logo = {};
+            var company = 
+            window.onload = function() {
+                logo.left = document.getElementById('svgBithexLogo_PartLeftInner');
+                logo.right = document.getElementById('svgBithexLogo_PartRightInner');
+                logo.vertical = document.getElementById('svgBithexLogo_PartVerticalInner');
+                company = document.getElementById('bhCompany');
+            };
+
+            var step = 50;
+            var period =2000;
+            var counter = 0;
+            var forward = true;
+            var timer = setInterval(function() {
+                counter++;
+
+                var time = counter * step;
+                var progress = time / period;
+                if (time > period) {
+                    forward = !forward;
+                    counter = 0;
+                    return true;
+                }
+
+
+                var up_progress = forward ? progress : 1 - progress;
+                var dwn_progress = !forward ? progress : 1 - progress;
+
+                up_progress = up_progress / 2 + .5;
+                dwn_progress = dwn_progress / 2 + .25 ;
+
+                //logo.vertical.style.strokeOpacity = logo.right.style.strokeOpacity = up_progress;
+                logo.left.style.strokeOpacity = dwn_progress;
+
+
+            }, step);
+        </script>
+
+    </head>
+    <body>
+        
+        <br><br>
+                <br><br>
+                        <br><br>
+                        <br><br>
+                        <br><br>
+        <svg id="svgBithexLogo"
+             viewBox="0 0 104.2 91.824997"
+             xmlns="http://www.w3.org/2000/svg"
+             version="1.1"
+             xml:space="preserve">
+
+
+            <g id="svgBithexLogo_Layer" 
+               transform="matrix(1.25,0,0,-1.25,-104.0875,147.0375)">
+
+                <g id="svgBithexLogo_PartLeft"    transform="translate(126.7,114.8)">
+                    <path id="svgBithexLogo_PartLeftInner" d="m 0,0 -40.6,0 37,-67.8 40.6,0 L 0,0 z"
+                          fill="none" 
+                          stroke="#ffffff" 
+                          stroke-width="5.65999985"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-miterlimit="10"
+                          stroke-opacity=".5"
+                          stroke-dasharray="none" />
+                </g>
+
+                <g id="svgBithexLogo_PartRight" transform="translate(123.2,114.8)">
+                    <path id="svgBithexLogo_PartRightInner" d="M 0,0 40.6,0 3.5,-67.8 -37,-67.8 0,0 z"
+                          fill="none"
+                          stroke="#ffffff"
+                          stroke-width="5.65999985"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-miterlimit="10"
+                          stroke-opacity="1"
+                          stroke-dasharray="none" />
+                </g>
+
+                <g id="svgBithexLogo_PartVertical" transform="translate(145.5,80.9)">
+                    <path  id="svgBithexLogo_PartVerticalInner" d="M 0,0 -40.8,0"
+                           fill="none"
+                           stroke="#ffffff"
+                           stroke-width="5.65999985"
+                           stroke-linecap="butt"
+                           stroke-linejoin="round"
+                           stroke-miterlimit="10"
+                           stroke-opacity="1"
+                           stroke-dasharray="none" />
+                </g>        
+            </g>
+        </svg>
+        <div id="bhCompany">bit.hex</div>
+        <div id="bhCopyright">
+            &COPY; bit.hex UG (haftungsbeschränkt)
+        </div>
+        <div id="bhOverlay"></div>
+    </body>
+</html>
